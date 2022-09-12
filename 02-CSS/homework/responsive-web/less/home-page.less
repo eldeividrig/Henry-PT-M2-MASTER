@@ -9,7 +9,13 @@
     }
 
     p {
-      padding:0 15px;
+      padding: 0 15px;
+    }
+
+    img {
+      width: 100%;
+      .roundImg(20px);
+      margin-top: 15px;
     }
 
   }
@@ -58,6 +64,11 @@
       }
 
       .btn {
+        .btn(white, black, 20px)
+      }
+
+      .btn:hover {
+        .btn(green, red, 15px)
       }
     }
 
