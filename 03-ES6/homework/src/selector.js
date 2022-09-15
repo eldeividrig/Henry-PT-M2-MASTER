@@ -9,15 +9,14 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
   // usa matchFunc para identificar elementos que matchien
 
   // TU CÓDIGO AQUÍ
-  
-    if (!callback) {
-      const elementos = [];
-      traverseDomAndCollectElements(rootNode, (node) => {
-        elementos.push(node);
-      })
-      return nodes;
-    }
-  };
+  if(matchFunc(startEl)) resultSet.push(startEl);
+  for (let i = 0; i < startEl.children.length; i++) {
+    let child = startEl.children[i];
+    let elementsFound = traverseDomAndCollectElements(matchFunc, child);
+    resultSet = [...resultSet, ...elementsFound];    
+  }
+  return resultSet;
+};
 
   // Detecta y devuelve el tipo de selector
   // devuelve uno de estos tipos: id, class, tag.class, tag
@@ -45,9 +44,9 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
       matchFunction = el => el.classList.contains(selector.substring(1));
     } else if (selectorType === "tag.class") {
       matchFunction = el => {
-        let aux = selector.split('.');
-        if (el.tagName === aux[0] || el.classList.contains(aux[1])) return true;
-        return false;
+        let [t,c] = selector.split('.');
+        //if (el.tagName === t || el.classList.contains(c)) return true; return false;  estoy haciendo lo mismo que abajo        
+        return matchFunctionMaker(t)(el) && matchFunctionMaker("." + c)(el);
       }
     } else if (selectorType === "tag") {
       matchFunction = el => el.tagName.toLowerCase() === selector;
