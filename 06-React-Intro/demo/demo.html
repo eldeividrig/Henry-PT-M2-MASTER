@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <title>Henry - React Demo 1</title>
 </head>
+
 <body>
   <div id='app'></div>
 
@@ -12,10 +14,85 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
 
-  const element = <h1>Hello, world!</h1>;
+    //1. Crear Elemento
+    //const element = <h1>Hello {formatName('David', 'Barboza')}</h1>;
+    //2. Crea una funcion que pase una variable al elemento creado
+    // function formatName(name, lastName) {
+    //   return `${name} ${lastName}`;
+    // };
 
-  
-  // function formatName(user) {
+    //3. Creacion de un componente Persona
+    const personas = [
+      {
+        name: 'Toni',
+        lastName: 'Tralice',
+        id: 0
+      },
+      {
+        name: 'Fran',
+        lastName: 'Etcheverri',
+        id: 1
+      },
+      {
+        name: 'Agustin',
+        lastName: 'Amani',
+        id: 2
+      }
+    ]
+
+    //4. pasar props al componente (attrs)
+    function Persona({ name, lastName }) {
+      //Logica
+      return (
+        <h1>Hello {name} {lastName}</h1>
+      )
+    }
+
+    //5. crear componente de funcion contenedor
+    // function Container(props) {
+    //   //Logica
+    //   let {personas} = props;
+    //   return(
+    //     <div>
+    //       {
+    //         personas.map(p => {
+    //           return <Persona lastName={p.lastName} name={p.name} key={p.id}/>
+    //         })
+    //       }
+
+    //     </div>
+    //   )
+    // }
+
+    //6. crear componente de clase
+    class Container extends React.Component {      
+      render() {
+        let {personas} = this.props;
+        return (
+          <div>
+            {
+              personas.map(p => {
+                return <Persona lastName={p.lastName} name={p.name} key={p.id} />
+              })
+            }
+          </div>
+        )
+      }
+    }
+
+
+
+    ReactDOM.render(
+      <Container personas={personas} />,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+
+</html>
+
+
+<!-- // function formatName(user) {
   //   return user.firstName + ' ' + user.lastName;
   // };
 
@@ -64,12 +141,4 @@
   //      } 
   //     </div>
   //   )
-  // }
-
-  ReactDOM.render(
-    element,
-    document.getElementById('app')
-  );
-  </script>
-</body>
-</html>
+  // } -->
