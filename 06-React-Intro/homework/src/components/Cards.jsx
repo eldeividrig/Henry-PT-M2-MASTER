@@ -1,25 +1,24 @@
+import stylesCards from '../styles/Cards.module.css';
+import Card from './Card.jsx';
+
 import React from 'react';
 
-export default function Cards(props) {
+
+export default function Cards({cities}) {
   // acá va tu código
   // tip, podés usar un map
-  let {cities} = props
-  return <div className='cards'>
+  return <div className={ `${stylesCards.container}` }>
     
-    {cities.map((e, i) => {
+    {cities.map(e => {
       return (
-        <div className='card' key={i}>
-          <button onClick={() => alert(e.name)} className='btnCards'>X</button>
-          <h4>{e.name}</h4>   
-          <div className='contenido'>
-            <div>Min</div>
-            <div>{e.main.temp_min}</div>
-            <div>Max</div>
-            <div>{e.main.temp_max}</div>
-            <img src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt="img clima"/>
-          </div>
-          
-        </div>
+        <Card
+          max={e.main.temp_max}
+          min={e.main.temp_min}
+          name={e.name}
+          img={e.weather[0].icon}
+          onClose={() => alert(e.name)}
+          key={e.weather[0].id}
+        />        
       )
     })}
   </div>

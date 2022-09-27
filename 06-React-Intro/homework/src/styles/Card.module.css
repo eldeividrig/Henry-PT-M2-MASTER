@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  height: 200px;
+  width: 350px;
+  border: 1px solid rgb(206, 205, 205);
+  border-radius: 5px;
+  overflow: hidden;
+  
+}
+
+
+.btnCard {
+  width: 25px;
+  border-radius: 5px;
+  border: none;
+  margin: 5px;
+  align-self: flex-end;
+  margin-top: -10px;
+}
+
+.btnColor {  
+  background-color: rgb(235, 79, 79);
+  color: white;
+}
+
+.btnColor:hover{
+  color: rgb(235, 79, 79);
+  background-color: white;
+}
+
+.contenido{
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+}
+
+.temMin {
+  margin-left: 5px;
+}
+
+.temMax {
+  margin-left: 60px;
+}
+
+.img {
+  padding-left: 15px;
+  margin-top: -10px;
+  margin-left: 15px;
+}
+
+
+
+
+
+

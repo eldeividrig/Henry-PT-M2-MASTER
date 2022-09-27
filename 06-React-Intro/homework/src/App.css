@@ -37,44 +37,7 @@
   }
 }
 
-.cards{
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  
-}
-.card{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60%;
-  width: 20%;
-  border: 2px solid black;
-}
-
-.searchBar{
+.cont{
   display: flex;
   justify-content: center;
-}
-
-.text{
-  width: 20%;
-  margin-right: 10px;
-  border-radius: 5px;
-  resize: none;
-}
-
-.boton{
-  
-  margin-left: 10px;
-  border-radius: 5px;
-}
-
-.btnCards{
-  position: relative;
-  top: 5px; left: 150px;
-}
-
-.contenido {
-  display: flex;
 }
