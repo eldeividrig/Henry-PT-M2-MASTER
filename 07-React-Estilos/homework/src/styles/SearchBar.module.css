@@ -1,0 +1,25 @@
+.searchBar {
+    display: flex;
+    justify-content: center;
+    padding-right: 5px;
+    margin-top: 10px;
+}
+
+.text {
+    width: 20%;
+    margin-right: 10px;
+    border-radius: 5px;
+    resize: none;
+    background-color: rgb(187, 189, 162);
+}
+
+.boton {
+    background-color: rgb(204, 204, 230);
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: rgb(43, 122, 12);
+    color: yellow;
+}
