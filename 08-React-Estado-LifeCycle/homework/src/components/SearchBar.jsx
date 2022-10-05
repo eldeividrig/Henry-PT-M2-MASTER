@@ -1,16 +1,23 @@
 import React, { useState } from "react";
+import './SearchBar.css';
 
 export default function SearchBar({onSearch}) {
+  const [city, setCity] = useState("");
   return (
-    <form onSubmit={(e) => {
+    <form className="formSearch" onSubmit={(e) => {
       e.preventDefault();
-      onSearch("Cairns");
+      onSearch(city);
+      setCity("");
     }}>
-      <input
+      <input 
+        className="text"
         type="text"
         placeholder="Ciudad..."
+        value={city}
+        onChange={e => setCity(e.target.value)}
+        
       />
-      <input type="submit" value="Agregar" />
+      <input className="boton" type="submit" value="Agregar" />
     </form>
   );
 }
