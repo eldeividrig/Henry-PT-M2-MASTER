@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import './Buscador.css';
 import { getMovies } from "../../actions";
+import { addMovieFavorite } from "../../actions";
 
 
 
@@ -46,6 +47,16 @@ export class Buscador extends Component {
               <Link to={`/movie/${movie.imdbID}`}>
                 {movie.Title}
               </Link>
+              <button 
+                onClick={()=>
+                  this.props.addMovieFavorite({
+                    title: movie.Title,
+                    id: movie.imdbID
+                  }
+                )}
+              >
+                FAV
+              </button>
             </div>
           ))
          }
@@ -63,7 +74,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // addMovieFavorite: movie => dispatch(addMovieFavorite(movie)),
+    addMovieFavorite: title => dispatch(addMovieFavorite(title)),
     getMovies: title => dispatch(getMovies(title))
   };
 }

@@ -1,26 +1,28 @@
 const initialState = {
-    moviesFavourites: [],
+    moviesFavorites: [],
     moviesLoaded: [],
     movieDetail: {}
 };
 
 export default function rootReducer(state = initialState, action){
     switch (action.type) {
-        // case 'ADD_MOVIE_FAVORITE':
-        //     return {
-        //         ...state,
-        //         moviesFavourites: state.moviesFavourites.concat(action.payload)
-        //     }
-        // case 'REMOVE_MOVIE_FAVORITE':
-        //     return {
-        //         ...state,
-        //         count: state.count - 1
-        //     }
-        // case 'GET_MOVIE_DETAIL':
-        //     return {
-        //         ...state,
-        //         count: 0
-        //     }
+        case 'ADD_MOVIE_FAVORITE':
+            return {
+                ...state,
+                //tambien se puede concatenar con spread operator
+                // [...state.moviesFavourites, action.payload]
+                moviesFavorites: state.moviesFavorites.concat(action.payload)
+            };
+        case 'REMOVE_MOVIE_FAVORITE':
+            return {
+                ...state,
+                moviesFavorites: state.moviesFavorites.filter(movie => movie.id !== action.payload)
+            };
+        case 'GET_MOVIE_DETAIL':
+            return {
+                ...state,
+                movieDetail: action.payload
+            };
         case 'GET_MOVIES':
             return {
                 ...state,
